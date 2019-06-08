@@ -13,7 +13,7 @@ public class Dizionario {
     public Dizionario() {
 
         try {
-            File dizionario = new File("./wordlist.txt");
+            File dizionario = new File("wordlist.txt");
             Scanner parola = new Scanner(dizionario);
 
             while(parola.hasNextLine())
@@ -42,6 +42,12 @@ public class Dizionario {
 
     public String getParolaRandom() {
         Random r = new Random();
-        return wordlist.get(r.nextInt(wordlist.size()));
+        try{
+            return wordlist.get(r.nextInt(wordlist.size()));
+        }
+        catch(IllegalArgumentException e) {
+            System.out.println("Controllare che wordlist.txt si trovi nella stessa directory del file jar!");
+            return "";
+        }
     }
 }

@@ -1,9 +1,7 @@
 package com.company;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Grafica {
@@ -96,7 +94,7 @@ public class Grafica {
 
     public static void asciiart(){
         try {
-            File file = new File("./ascii.txt");
+            File file = new File("ascii.txt");
             Scanner sc = new Scanner(file);
 
             while(sc.hasNextLine())
@@ -105,6 +103,7 @@ public class Grafica {
         }
         catch(FileNotFoundException e) {
             System.out.println("Errore! ascii.txt non trovato!");
+            System.out.println("Controllare che ascii.txt si trovi nella stessa directory del file jar!");
         }
     }
 
@@ -123,5 +122,4 @@ public class Grafica {
             }
         }
     }
-
 }

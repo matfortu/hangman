@@ -19,16 +19,18 @@ public class Impiccato {
 
         Dizionario wordlist = new Dizionario();
 
-
         while(ancora) {
             Parola parola = new Parola(wordlist);
-            Gioco.start(parola);
-            do {
-                System.out.println("Vuoi giocare ancora? (s/n): " + System.getProperty( "os.name" ));
-                scelta = sc.nextLine();
-            } while(!Utility.sceltaValida(scelta));
-            if(!Utility.scelta(scelta))
-                ancora = false;
+            if(parola.getParola().length() != 0) {
+                Gioco.start(parola);
+                do {
+                    System.out.println("Vuoi giocare ancora? (s/n): ");
+                    scelta = sc.nextLine();
+                } while (!Utility.sceltaValida(scelta));
+                if (!Utility.scelta(scelta))
+                    ancora = false;
+            }
+            else ancora = false;
         }
         sc.close();
     }
