@@ -5,9 +5,8 @@ import java.util.Scanner;
 
 public class Gioco {
 
-    public static void start(String parola) {
-        //System.out.println(parola);
-        String segreta = Utility.secretaParola(parola);
+    public static void start(Parola parola) {
+        //System.out.println(parola.getParola());
         boolean fine = false;
         boolean valido = false;
         Scanner lettera = new Scanner(System.in);
@@ -18,9 +17,9 @@ public class Gioco {
         int errori = 0;
         int vite = 7;
 
-        if(!segreta.isEmpty()) {
+        if(!parola.getParolaSecretata().isEmpty()) {
             Grafica.disegna(errori);
-            System.out.println("\n\nParola da indovinare: \n" + segreta);
+            System.out.println("\n\nParola da indovinare: \n" + parola.getParolaSecretata());
             while (!fine) {
                 while (!valido) {
                     System.out.println("\nInserire una lettera: ");
@@ -49,18 +48,16 @@ public class Gioco {
                     provate = Utility.lettereProvate(carattere, provate);
                     Utility.stampa(provate);
                 }
-                segreta = Utility.sostituisci(parola, segreta, posizioni);
-                System.out.println("\n\nParola da indovinare: \n" + segreta);
-                if (!Utility.contiene(segreta, '*') || errori == vite) {
+                Utility.sostituisci(parola, posizioni);
+                System.out.println("\n\nParola da indovinare: \n" + parola.getParolaSecretata());
+                if (!Utility.contiene(parola.getParolaSecretata(), '*') || errori == vite) {
                     if (errori == vite)
-                        System.out.println("Game over! La parola corretta era " + parola);
+                        System.out.println("Game over! La parola corretta era " + parola.getParola());
                     else
                         System.out.println("Complimenti, hai vinto!");
                     fine = true;
                 }
             }
-            lettera.close();
         }
     }
-
 }

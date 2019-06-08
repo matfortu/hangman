@@ -96,7 +96,7 @@ public class Grafica {
 
     public static void asciiart(){
         try {
-            File file = new File("C:\\ascii.txt");
+            File file = new File("./ascii.txt");
             Scanner sc = new Scanner(file);
 
             while(sc.hasNextLine())
@@ -110,8 +110,8 @@ public class Grafica {
 
     public static void pulisciSchermo() {
         try {
-            if( System.getProperty( "os.name" ).startsWith( "Window" ) ) {
-               Runtime.getRuntime().exec("cls");
+            if( System.getProperty( "os.name" ).startsWith( "Windows" ) ) {
+                Runtime.getRuntime().exec("cls");
             }
             else {
                Runtime.getRuntime().exec("clear");
