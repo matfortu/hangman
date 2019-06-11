@@ -10,20 +10,20 @@ public class Impiccato {
         Scanner sc = new Scanner(System.in);
         String scelta = "";
 
-        System.out.println("Gioco dell'impiccato - Mattia Fortunato\n");
+        System.out.println("\u001b[1mGioco dell'impiccato - Mattia Fortunato");
         System.out.println("Progetto Java per l'esame di Programmazione Prof.Anisetti");
         System.out.println("Funzionamento: il gioco seleziona casualmente una parola da una wordlist in txt,");
         System.out.println("l'utente prova ad indovinarla inserendo dei caratteri finché non viene indovinata");
-        System.out.println("o vengono esauriti i 7 tentativi disponibili.\n");
+        System.out.println("o vengono esauriti i 7 tentativi disponibili.\u001b[0m\n");
         Grafica.asciiart();
 
         Dizionario wordlist = new Dizionario();
 
         while(ancora) {
             Parola parola = new Parola(wordlist);
-            if(parola.getParola().length() != 0) {
+            if(parola.getParola().length() != 0) {                          //il gioco parte solo se la parola è stata estratta correttamente dalla wordlist
                 Gioco.start(parola);
-                do {
+                do {                                                        //ciclo per la nuova partita dopo averne conclusa una
                     System.out.println("Vuoi giocare ancora? (s/n): ");
                     scelta = sc.nextLine();
                 } while (!Utility.sceltaValida(scelta));
