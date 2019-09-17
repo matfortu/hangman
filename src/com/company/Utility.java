@@ -15,17 +15,13 @@ public class Utility {
 
     public static boolean inputValido(String input) {
         /*controlla se la stringa data in input sia valida, contenga un solo carattere e non sia un numero*/
-        if(input.length()!=1 || Utility.isNumeric(input) || input.contains(" ")) {
+        if(input.length()!=1 || !input.matches("^[a-zA-Z]")) {
             System.out.println("\u001b[31mInput non valido! \u001b[0m");
             return false;
         }
         else return true;
     }
 
-    private static boolean isNumeric(String input) {
-        /*controlla che la stringa in ingresso non contenga numeri*/
-        return Pattern.compile("[0-9]").matcher(input).find();
-    }
 
     public static ArrayList posizioniCarattere(char carattere, Parola parola) {
         /*restituisce un ArrayList contenente le posizioni in cui si trova il carattere da cercare nella parola da indovinare*/
